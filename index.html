@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luck Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        #dice {
+            font-size: 36px;
+            margin-top: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Luck Game</h1>
+    <p>Click the button to roll the dice and see who wins!</p>
+
+    <div id="dice">Player 1: 1 | Player 2: 1</div>
+    <div id="result">Result: No winner yet</div>
+
+    <button onclick="rollDice()">Roll Dice</button>
+
+    <script>
+        function rollDice() {
+            // Generate random numbers for two dice rolls (between 1 and 6)
+            const player1Result = Math.floor(Math.random() * 6) + 1;
+            const player2Result = Math.floor(Math.random() * 6) + 1;
+
+            // Display the results
+            document.getElementById('dice').innerText = `Player 1: ${player1Result} | Player 2: ${player2Result}`;
+
+            // Determine the winner
+            let resultMessage;
+            if (player1Result > player2Result) {
+                resultMessage = 'Player 1 wins!';
+            } else if (player2Result > player1Result) {
+                resultMessage = 'Player 2 wins!';
+            } else {
+                resultMessage = 'It\'s a tie!';
+            }
+
+            // Display the result message
+            document.getElementById('result').innerText = `Result: ${resultMessage}`;
+        }
+    </script>
+</body>
+</html>
